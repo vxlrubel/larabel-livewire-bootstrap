@@ -1,0 +1,69 @@
+@import "bootstrap/scss/bootstrap";
+
+:root{
+    --header-top-height: 35px;
+    --sidebar-width: 300px;
+    --logo-height: 50px;
+    --profile-bottom-height: 0px;
+    --content-section-width: 100%;
+}
+
+@media(width >= 992px) {
+    :root {
+        --header-top-height: 0px;
+        --profile-bottom-height: 50px;
+        --content-section-width: calc(100% - var(--sidebar-width));
+    }
+}
+
+
+
+:root {
+    --background: #ffffff;
+    --color: #212529;
+    --sidebar-background: #ffffff;
+    --content-background: #f8f9fa;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: #343a40;
+        --color: #f8f9fa;
+        --sidebar-background: #343a40;
+        --content-background: #495057;
+    }
+}
+body{
+    background: var(--background);
+    color: var(--color);
+}
+
+
+.header-top{
+    height: var(--header-top-height);
+}
+
+.sidebar{
+    position: fixed;
+    left: 0;
+    width: var(--sidebar-width);
+    height: calc(100dvh - var(--header-top-height));
+    background-color: var(--sidebar-background);
+}
+
+.main{
+    height: calc(100dvh - var(--header-top-height));
+    width: var(--content-section-width);
+    background-color: var(--content-background);
+    float: right;
+}
+
+.logo{
+    height: var(--logo-height);
+}
+.menu-content{
+    height: calc(100% - var(--logo-height) - var(--profile-bottom-height));
+}
+.profile-bottom{
+    height: var(--profile-bottom-height);
+}
