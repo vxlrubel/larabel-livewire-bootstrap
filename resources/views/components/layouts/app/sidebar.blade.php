@@ -17,7 +17,7 @@
                 <div class="">
                     <a href="/"
                         target="_blank"
-                        class="btn btn-sm text-decoration-none d-inline-flex align-items-center gap-1 text-white">
+                        class="btn btn-sm text-decoration-none d-inline-flex align-items-center text-prefers-color-scheme gap-1">
                         <span>
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 height="20px"
