@@ -87,7 +87,7 @@
                 </a>
             </div>
             <div class="menu-content py-3">
-                @{{ message }}
+                here will be menu item
             </div>
 
             <div class="profile-bottom border-top pb-2">
