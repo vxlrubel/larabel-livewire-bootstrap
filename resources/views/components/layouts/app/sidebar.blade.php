@@ -8,40 +8,95 @@
 
 <body>
 
-    <header class="clearfix">
-        <div class="container-fluid header-top bg-primary d-lg-none text-end">
+    <header class="clearfix"
+        id="header"
+        v-cloak>
+        <div class="container-fluid header-top d-lg-none">
 
-            <button class="btn btn-sm btn-primary">Menu Toggle</button>
-            <div class="dropdown d-inline-flex">
-                <button class="btn btn-primary btn-sm dropdown-toggle"
-                    type="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    Profile
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item"
-                            href="#">Action</a></li>
-                    <li><a class="dropdown-item"
-                            href="#">Another action</a></li>
-                    <li><a class="dropdown-item"
-                            href="#">Something else here</a></li>
-                </ul>
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="">
+                    <a href="/"
+                        target="_blank"
+                        class="btn btn-sm text-decoration-none d-inline-flex align-items-center gap-1 text-white">
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                height="20px"
+                                viewBox="0 -960 960 960"
+                                width="20px"
+                                fill="currentColor">
+                                <path
+                                    d="M802-107 696-213v81h-72v-204h204v72h-81l106 106-51 51ZM480-96q-79 0-149-30t-122.5-82.5Q156-261 126-331T96-480q0-80 30-149.5t82.5-122Q261-804 331-834t149-30q80 0 149.5 30t122 82.5Q804-699 834-629.5T864-480q0 18-2 36t-5 36h-74q4-18 6.5-36t2.5-36q0-18-2.5-36t-6.5-36H622q2 17 2.5 35t.5 35q0 19-1 37t-2 37h-73q1-19 2-37.5t1-37.5q0-17-.5-34.5T549-552H411q-2 18-2.5 36t-.5 36q0 18 .5 36t2.5 36h93v72h-84q8 45 22 87.5t38 80.5q18 0 36.5-2t35.5-7v74q-17 5-35.5 6T480-96ZM177-408h161q-2-17-2.5-35t-.5-35q0-19 .5-37t2.5-37H177q-4 18-6.5 36t-2.5 36q0 18 2.5 36t6.5 36Zm27-216h143q6-40 16-79t26-76q-60 18-108 58t-77 97Zm186 443q-18-37-27.5-76T347-336H204q29 57 77 97t109 58Zm30-443h120q-8-44-21.5-86T480-789q-25 37-38 79t-22 86Zm193 0h143q-29-57-77-97t-108-58q16 37 26 76t16 79Z" />
+                            </svg>
+                        </span>
+                        <span>Visit Website</span>
+                    </a>
+                </div>
+                <div class="text-end">
+                    <button class="btn btn-sm text-prefers-color-schemev border-0"
+                        @click.stop="toggle = !toggle">
+                        <span v-if="toggle">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                height="20px"
+                                viewBox="0 -960 960 960"
+                                width="20px"
+                                class="text-prefers-color-scheme"
+                                fill="currentColor">
+                                <path
+                                    d="m291-240-51-51 189-189-189-189 51-51 189 189 189-189 51 51-189 189 189 189-51 51-189-189-189 189Z" />
+                            </svg>
+                        </span>
+                        <span v-else>
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                height="20px"
+                                viewBox="0 -960 960 960"
+                                width="20px"
+                                class="text-prefers-color-scheme"
+                                fill="currentColor">
+                                <path d="M144-264v-72h672v72H144Zm0-180v-72h672v72H144Zm0-180v-72h672v72H144Z" />
+                            </svg>
+                        </span>
+                    </button>
+                    <div class="dropdown d-inline-flex">
+                        <button class="btn text-prefers-color-scheme btn-sm dropdown-togglev"
+                            type="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Profile
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item"
+                                    href="#">Action</a></li>
+                            <li><a class="dropdown-item"
+                                    href="#">Another action</a></li>
+                            <li><a class="dropdown-item"
+                                    href="#">Something else here</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
+
         </div>
-        <aside class="sidebar border-end px-4">
+        <aside class="sidebar px-4"
+            @click.stop
+            :class="{ 'show': toggle }">
             <div class="logo border-bottom overflow-hidden">
-                <h1 class="fs-2 text-uppercase m-0">logo</h1>
+                <a href="{{ url('/dashboard') }}">
+                    <img src="{{ asset('img/livewire.png') }}"
+                        alt="logo"
+                        class="img-fluid">
+                </a>
             </div>
-            <div class="menu-content py-3">menu content</div>
+            <div class="menu-content py-3">
+                @{{ message }}
+            </div>
 
             <div class="profile-bottom border-top pb-2">
                 <div class="btn-group dropup w-100">
                     <button type="button"
-                        class="btn btn-light w-100 dropdown-toggle px-0 text-left"
+                        class="btn w-100 dropdown-toggle text-prefers-color-scheme px-0 text-left"
                         data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        Dropup
+                        Profile
                     </button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item"
@@ -55,157 +110,40 @@
     </header>
 
     <main class="main px-xxl-5 p-4">
-        <span class="fw-bold">site_content: </span>
         {{ $slot }}
-        @fluxScripts
     </main>
 
-    {{-- <flux:sidebar sticky
-        stashable
-        class="border-e border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
-        <flux:sidebar.toggle class="lg:hidden"
-            icon="x-mark" />
 
-        <a href="{{ route('dashboard') }}"
-            class="me-5 flex items-center space-x-2 rtl:space-x-reverse"
-            wire:navigate>
-            <x-app-logo />
-        </a>
+    <script src="{{ asset('js/vue.global.js') }}"></script>
 
-        <flux:navlist variant="outline">
-            <flux:navlist.group :heading="__('Platform')"
-                class="grid">
-                <flux:navlist.item icon="home"
-                    :href="route('dashboard')"
-                    :current="request()->routeIs('dashboard')"
-                    wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
-            </flux:navlist.group>
-        </flux:navlist>
+    <script>
+        const {
+            createApp
+        } = Vue;
+        const Header = createApp({
+            data() {
+                return {
+                    toggle: false,
+                }
+            },
+            mounted() {
+                if (this.toggle) {
+                    return
+                }
 
-        <flux:spacer />
+                document.body.addEventListener('click', (e) => {
+                    if (!this.toggle) {
+                        return
+                    }
+                    if (!this.$el.contains(e.target)) {
+                        this.toggle = false;
+                    }
+                });
+            }
+        });
 
-        <flux:navlist variant="outline">
-            <flux:navlist.item icon="folder-git-2"
-                href="https://github.com/laravel/livewire-starter-kit"
-                target="_blank">
-                {{ __('Repository') }}
-            </flux:navlist.item>
-
-            <flux:navlist.item icon="book-open-text"
-                href="https://laravel.com/docs/starter-kits#livewire"
-                target="_blank">
-                {{ __('Documentation') }}
-            </flux:navlist.item>
-        </flux:navlist>
-
-        <!-- Desktop User Menu -->
-        <flux:dropdown class="hidden lg:block"
-            position="bottom"
-            align="start">
-            <flux:profile :name="auth()->user()->name"
-                :initials="auth()->user()->initials()"
-                icon:trailing="chevrons-up-down" />
-
-            <flux:menu class="w-[220px]">
-                <flux:menu.radio.group>
-                    <div class="p-0 text-sm font-normal">
-                        <div class="flex items-center gap-2 px-1 py-1.5 text-start text-sm">
-                            <span class="relative flex h-8 w-8 shrink-0 overflow-hidden rounded-lg">
-                                <span
-                                    class="flex h-full w-full items-center justify-center rounded-lg bg-neutral-200 text-black dark:bg-neutral-700 dark:text-white">
-                                    {{ auth()->user()->initials() }}
-                                </span>
-                            </span>
-
-                            <div class="grid flex-1 text-start text-sm leading-tight">
-                                <span class="truncate font-semibold">{{ auth()->user()->name }}</span>
-                                <span class="truncate text-xs">{{ auth()->user()->email }}</span>
-                            </div>
-                        </div>
-                    </div>
-                </flux:menu.radio.group>
-
-                <flux:menu.separator />
-
-                <flux:menu.radio.group>
-                    <flux:menu.item :href="route('settings.profile')"
-                        icon="cog"
-                        wire:navigate>{{ __('Settings') }}</flux:menu.item>
-                </flux:menu.radio.group>
-
-                <flux:menu.separator />
-
-                <form method="POST"
-                    action="{{ route('logout') }}"
-                    class="w-full">
-                    @csrf
-                    <flux:menu.item as="button"
-                        type="submit"
-                        icon="arrow-right-start-on-rectangle"
-                        class="w-full">
-                        {{ __('Log Out') }}
-                    </flux:menu.item>
-                </form>
-            </flux:menu>
-        </flux:dropdown>
-    </flux:sidebar> --}}
-
-    <!-- Mobile User Menu -->
-    {{-- <flux:header class="lg:hidden">
-        <flux:sidebar.toggle class="lg:hidden"
-            icon="bars-2"
-            inset="left" />
-
-        <flux:spacer />
-
-        <flux:dropdown position="top"
-            align="end">
-            <flux:profile :initials="auth()->user()->initials()"
-                icon-trailing="chevron-down" />
-
-            <flux:menu>
-                <flux:menu.radio.group>
-                    <div class="p-0 text-sm font-normal">
-                        <div class="flex items-center gap-2 px-1 py-1.5 text-start text-sm">
-                            <span class="relative flex h-8 w-8 shrink-0 overflow-hidden rounded-lg">
-                                <span
-                                    class="flex h-full w-full items-center justify-center rounded-lg bg-neutral-200 text-black dark:bg-neutral-700 dark:text-white">
-                                    {{ auth()->user()->initials() }}
-                                </span>
-                            </span>
-
-                            <div class="grid flex-1 text-start text-sm leading-tight">
-                                <span class="truncate font-semibold">{{ auth()->user()->name }}</span>
-                                <span class="truncate text-xs">{{ auth()->user()->email }}</span>
-                            </div>
-                        </div>
-                    </div>
-                </flux:menu.radio.group>
-
-                <flux:menu.separator />
-
-                <flux:menu.radio.group>
-                    <flux:menu.item :href="route('settings.profile')"
-                        icon="cog"
-                        wire:navigate>{{ __('Settings') }}</flux:menu.item>
-                </flux:menu.radio.group>
-
-                <flux:menu.separator />
-
-                <form method="POST"
-                    action="{{ route('logout') }}"
-                    class="w-full">
-                    @csrf
-                    <flux:menu.item as="button"
-                        type="submit"
-                        icon="arrow-right-start-on-rectangle"
-                        class="w-full">
-                        {{ __('Log Out') }}
-                    </flux:menu.item>
-                </form>
-            </flux:menu>
-        </flux:dropdown>
-    </flux:header> --}}
+        Header.mount('#header')
+    </script>
 
 
 
