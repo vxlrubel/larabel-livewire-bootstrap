@@ -57,7 +57,7 @@
                         </span>
                     </button>
                     <div class="dropdown d-inline-flex">
-                        <button class="btn text-prefers-color-scheme btn-sm dropdown-togglev"
+                        <button class="btn text-prefers-color-scheme btn-sm dropdown-toggle border-0 shadow-none"
                             type="button"
                             data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -77,7 +77,6 @@
 
         </div>
         <aside class="sidebar px-4"
-            @click.stop
             :class="{ 'show': toggle }">
             <div class="logo border-bottom overflow-hidden">
                 <a href="{{ url('/dashboard') }}">
@@ -93,12 +92,12 @@
             <div class="profile-bottom border-top pb-2">
                 <div class="btn-group dropup w-100">
                     <button type="button"
-                        class="btn w-100 dropdown-toggle text-prefers-color-scheme px-0 text-left"
+                        class="btn w-100 dropdown-toggle text-prefers-color-scheme border-0 px-0 text-left shadow-none"
                         data-bs-toggle="dropdown"
                         aria-expanded="false">
                         Profile
                     </button>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu end-0 start-0">
                         <li><a class="dropdown-item"
                                 href="#">Action</a></li>
                         <li><a class="dropdown-item"
@@ -135,6 +134,10 @@
                     if (!this.toggle) {
                         return
                     }
+                    if (e.target.closest('.sidebar')) {
+                        return;
+                    }
+
                     if (!this.$el.contains(e.target)) {
                         this.toggle = false;
                     }
