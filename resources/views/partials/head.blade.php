@@ -20,6 +20,8 @@
 
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
+@stack('styles')
+
 @vite(['resources/css/app.scss', 'resources/js/app.js'])
 
 @fluxAppearance

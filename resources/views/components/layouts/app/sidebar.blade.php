@@ -148,6 +148,7 @@
         Header.mount('#header')
     </script>
 
+    @stack('scripts')
 
 
 
