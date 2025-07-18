@@ -18,6 +18,8 @@
 <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600"
     rel="stylesheet" />
 
+
+    <link rel="stylesheet" href="{{ asset('fontawesome-pro/fontawesome-pro.css') }}">
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
 @stack('styles')

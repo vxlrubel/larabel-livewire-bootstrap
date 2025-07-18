@@ -85,8 +85,59 @@
                         class="img-fluid">
                 </a>
             </div>
-            <div class="menu-content py-3">
-                here will be menu item
+            <div class="menu-content hide-scrollbar py-3">
+                <ul class="list-unstyled d-grid sidebar-menu m-0 gap-1 p-0">
+
+                    <li>
+                        <a href="{{ url('/dashboard') }}">
+                            <span class="icon-item">
+                                <i class="fa-duotone fa-solid fa-grid-2"></i>
+                            </span>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <span class="icon-item">
+                                <i class="fa-duotone fa-user"></i>
+                            </span>
+                            Profile
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <span class="icon-item">
+                                <i class="fa-duotone fa-envelope"></i>
+                            </span>
+                            Messages
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <span class="icon-item">
+                                <i class="fa-duotone fa-gear"></i>
+                            </span>
+                            Settings
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <span class="icon-item">
+                                <i class="fa-duotone fa-bell"></i>
+                            </span>
+                            Notifications
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <span class="icon-item">
+                                <i class="fa-duotone fa-arrow-right-from-bracket"></i>
+                            </span>
+                            Logout
+                        </a>
+                    </li>
+
+                </ul>
             </div>
 
             <div class="profile-bottom border-top pb-2">

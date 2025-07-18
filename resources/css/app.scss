@@ -27,6 +27,7 @@
     --header-top-background: #ffffff;
     --sidebar-background: #ffffff;
     --content-background: #f8f9fa;
+    --menu-item-color: #212529;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -37,6 +38,7 @@
         --header-top-background: #343a40;
         --sidebar-background: #343a40;
         --content-background: #495057;
+        --menu-item-color: #ffffff;
     }
 }
 body{
@@ -93,3 +95,49 @@ body{
 .profile-bottom{
     height: var(--profile-bottom-height);
 }
+
+
+// hide scroll bar
+.hide-scrollbar {
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+
+/*********************************************************
+ * sidebar menu style
+ *********************************************************/
+
+ .sidebar-menu{
+    a{
+        text-decoration: none;
+        color: var(--menu-item-color);
+        display: flex;
+        align-items: center;
+        padding-block: .325rem;
+        transition: background-color 0.3s ease-in-out;
+
+        &:hover{
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        span.icon-item{
+            display: inline-flex;
+            height: 30px;
+            width: 30px;
+            align-items: center;
+            justify-content: center;
+            margin-right: 5px;
+        }
+    }
+    ul{
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+ }
