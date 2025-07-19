@@ -28,6 +28,7 @@
     --sidebar-background: #ffffff;
     --content-background: #f8f9fa;
     --menu-item-color: #212529;
+    --menu-item-hover-color: #7b2cbf;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -39,6 +40,7 @@
         --sidebar-background: #343a40;
         --content-background: #2b3035;
         --menu-item-color: #ffffff;
+        --menu-item-hover-color: #c77dff;
     }
 }
 body{
@@ -114,16 +116,46 @@ body{
  *********************************************************/
 
  .sidebar-menu{
+    li:has(ul.submenu-items){
+        a{
+            &.plus{
+                position: relative;
+                padding-right: 20px;
+                &::after{
+                    content: "+";
+                    position: absolute;
+                    right: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    color: currentColor;
+                    font-weight: bold;
+                }
+            }
+            &.minus{
+                position: relative;
+                padding-right: 20px;
+                &::after{
+                    content: "-";
+                    position: absolute;
+                    right: 3px;
+                    top: 50%;
+                    transform: translateY(-55%) scale(1.5);
+                    color: currentColor;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
     a{
         text-decoration: none;
         color: var(--menu-item-color);
         display: flex;
         align-items: center;
         padding-block: .325rem;
-        transition: background-color 0.3s ease-in-out;
+        transition: color 0.15s ease-in-out;
 
         &:hover{
-            background-color: rgba(0, 0, 0, 0.1);
+            color: var(--menu-item-hover-color);
         }
 
         span.icon-item{
@@ -139,5 +171,21 @@ body{
         padding: 0;
         margin: 0;
         list-style: none;
+        &.submenu-items{
+            display: none;
+            padding-left: 35px;
+            border-bottom: 1px solid #dee2e6;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.5rem;
+            li{
+                a{
+                    padding-left: 0px;
+                    font-size: 0.9rem;
+                }
+            }
+            &.show{
+                display: block;
+            }
+        }
     }
  }

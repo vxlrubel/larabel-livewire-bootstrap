@@ -86,58 +86,7 @@
                 </a>
             </div>
             <div class="menu-content hide-scrollbar py-3">
-                <ul class="list-unstyled d-grid sidebar-menu m-0 gap-1 p-0">
-
-                    <li>
-                        <a href="{{ url('/dashboard') }}">
-                            <span class="icon-item">
-                                <i class="fa-duotone fa-solid fa-grid-2"></i>
-                            </span>
-                            Dashboard
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);">
-                            <span class="icon-item">
-                                <i class="fa-duotone fa-user"></i>
-                            </span>
-                            Profile
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);">
-                            <span class="icon-item">
-                                <i class="fa-duotone fa-envelope"></i>
-                            </span>
-                            Messages
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);">
-                            <span class="icon-item">
-                                <i class="fa-duotone fa-gear"></i>
-                            </span>
-                            Settings
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);">
-                            <span class="icon-item">
-                                <i class="fa-duotone fa-bell"></i>
-                            </span>
-                            Notifications
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);">
-                            <span class="icon-item">
-                                <i class="fa-duotone fa-arrow-right-from-bracket"></i>
-                            </span>
-                            Logout
-                        </a>
-                    </li>
-
-                </ul>
+                <x-menu-items />
             </div>
 
             <div class="profile-bottom border-top pb-2">
@@ -174,6 +123,20 @@
             data() {
                 return {
                     toggle: false,
+                }
+            },
+            methods: {
+                toggleSubmenu(event) {
+                    const target = event.target.closest('li');
+                    if (target && target.querySelector('.submenu-items')) {
+                        const submenu = target.querySelector('.submenu-items');
+                        submenu.classList.toggle('show');
+                        const link = target.querySelector('a');
+                        if (link) {
+                            link.classList.toggle('plus');
+                            link.classList.toggle('minus');
+                        }
+                    }
                 }
             },
             mounted() {
